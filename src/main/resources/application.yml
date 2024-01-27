@@ -1,0 +1,65 @@
+# Config port, context path
+server:
+  port: 9191
+  servlet:
+    context-path: /mobilestore
+
+# Config static resources, database, jpa, security
+spring:
+    resources:
+        static-locations: classpath:/static/
+    datasource:
+        url: jdbc:mysql://localhost:3306/mobileStore
+        username: root
+        password: admin123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    main:
+        allow-circular-references: true
+    jpa:
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        repositories:
+            enabled: true
+    # Default login security
+    security:
+        user:
+            name: admin
+            password: admin123
+
+    # Config RabbitMQ
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+
+# Expose actuator endpoints
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    info:
+        env:
+            enabled: true
+
+# Config info endpoint
+info:
+    app:
+      name: Mobile Store
+      description: Mobile Store
+      version: 1.0.0
+      license: Apache License 2.0
+      licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+      contact.name: Mobile Store
+      contact.url: https://www.mobilestore.com
+
+# Config security
+token:
+  key: KZ7OGztgth8Etab8ajZGyAIghh3HUuw39zIsK/tMs7s=
